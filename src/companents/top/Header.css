@@ -1,0 +1,32 @@
+.header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 10px;
+  padding: 1em;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.top-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2em;
+  padding: 0 2em;
+}
+
+.search-input {
+  width: 25em;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border-color: var(--brand-color);
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    grid-template-columns: auto;
+  }
+}
