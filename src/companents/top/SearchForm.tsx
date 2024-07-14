@@ -1,9 +1,9 @@
 import { Component, ReactNode } from 'react';
 import { PreviousSearchTerm } from '../constants';
-import { GetDataType } from '../../types/data';
+import { HandleStateType } from '../../types/data';
 
-class SearchForm extends Component<GetDataType> {
-  constructor(props: GetDataType) {
+class SearchForm extends Component<HandleStateType> {
+  constructor(props: HandleStateType) {
     super(props);
   }
 
@@ -23,8 +23,11 @@ class SearchForm extends Component<GetDataType> {
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    const { getData } = this.props;
-    getData(0, this.state.value);
+    const { handleState } = this.props;
+    handleState({
+      page: 0,
+      searchTerm: this.state.value,
+    });
   };
 
   render(): ReactNode {

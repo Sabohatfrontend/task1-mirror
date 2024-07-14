@@ -59,8 +59,8 @@ export type PropsType = {
   value: DataType;
 };
 
-export interface GetDataType {
-  getData: (pageNumber: number, searchTerm: string) => void;
+export interface HandleStateType {
+  handleState: (newState: DataType) => void;
 }
 
 export type PaginationType = {

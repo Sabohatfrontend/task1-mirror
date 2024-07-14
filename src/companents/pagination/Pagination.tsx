@@ -1,9 +1,9 @@
 import { Component, ReactNode } from 'react';
-import { PaginationType } from '../../types/data';
+import { DataType, PaginationType } from '../../types/data';
 import './Pagination.css';
 
 type PropsPagination = {
-  getData: (pageNumber: number, searchTerm: string) => void;
+  handleState: (newState: DataType) => void;
   totalPages: number;
   searchTerm: string;
 };
@@ -18,7 +18,7 @@ class Pagination extends Component<PropsPagination> {
   };
 
   handlePage = (type: string) => {
-    const { getData, totalPages, searchTerm } = this.props;
+    const { handleState, totalPages, searchTerm } = this.props;
     this.setState(
       () => {
         switch (type) {
@@ -41,7 +41,10 @@ class Pagination extends Component<PropsPagination> {
         }
       },
       () => {
-        getData(this.state.pageNumber, searchTerm);
+        handleState({
+          page: this.state.pageNumber,
+          searchTerm: searchTerm,
+        });
       }
     );
   };

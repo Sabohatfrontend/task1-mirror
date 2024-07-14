@@ -2,11 +2,11 @@ import { Component, ReactNode } from 'react';
 import logo from '../../assets/search.svg';
 import './Header.css';
 import SearchForm from './SearchForm';
-import { GetDataType } from '../../types/data';
+import { HandleStateType } from '../../types/data';
 import ErrorButton from '../errors/ErrorButton';
 
-class Header extends Component<GetDataType> {
-  constructor(props: GetDataType) {
+class Header extends Component<HandleStateType> {
+  constructor(props: HandleStateType) {
     super(props);
   }
 
@@ -14,7 +14,7 @@ class Header extends Component<GetDataType> {
     return (
       <header className="header">
         <img src={logo} alt="Logo" />
-        <SearchForm getData={this.props.getData} />
+        <SearchForm handleState={this.props.handleState} />
         <ErrorButton />
       </header>
     );

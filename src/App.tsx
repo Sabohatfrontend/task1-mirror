@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Component, ReactNode } from 'react';
+import { useEffect, useState } from 'react';
 import MainPage from './pages/MainPage';
 import { DataType } from './types/data';
 import {
@@ -9,7 +9,7 @@ import {
   ErrorBoundary,
   PreviousSearchTerm,
 } from './companents';
-import { fetchData } from './companents/services/fetchData';
+import { fetchData } from './services/fetchData';
 
 const searchTerm = localStorage.getItem(PreviousSearchTerm) || '';
 
@@ -23,61 +23,60 @@ const initialValue: DataType = {
   searchTerm: searchTerm,
 };
 
-class App extends Component {
-  state = initialValue;
+const App = () => {
+  const [state, setState] = useState(initialValue);
 
-  handleState(newState: DataType) {
-    this.setState((prevState) => {
+  const handleState = (newState: DataType) => {
+    setState((prevState) => {
       return {
         ...prevState,
         ...newState,
       };
     });
-  }
-
-  componentDidMount(): void {
-    this.getData(0, this.state.searchTerm);
-  }
-
-  getData = async (pageNumber: number = 0, searchTerm: string = '') => {
-    this.handleState({
-      loading: true,
-    });
-    await fetchData(pageNumber, searchTerm)
-      .then((data) => {
-        this.handleState({
-          data: data,
-          loading: false,
-          error: false,
-          total: data.page.totalElements,
-          totalPages: data.page.totalPages,
-          searchTerm: searchTerm,
-        });
-        localStorage.setItem(PreviousSearchTerm, searchTerm);
-      })
-      .catch(() => {
-        this.handleState({
-          loading: false,
-          error: true,
-        });
-      });
   };
 
-  render(): ReactNode {
-    return (
-      <ErrorBoundary>
-        <Header getData={this.getData} />
-        <main className="main-content">
-          <MainPage value={this.state} />
-        </main>
-        <Pagination
-          getData={this.getData}
-          totalPages={this.state.totalPages || 0}
-          searchTerm={this.state.searchTerm || ''}
-        />
-      </ErrorBoundary>
-    );
-  }
-}
+  useEffect(() => {
+    const getData = async () => {
+      handleState({
+        loading: true,
+      });
+      if (state.page !== undefined && state.searchTerm !== undefined)
+        await fetchData(state.page, state.searchTerm)
+          .then((data) => {
+            handleState({
+              data: data,
+              loading: false,
+              error: false,
+              total: data.page.totalElements,
+              totalPages: data.page.totalPages,
+              searchTerm: state.searchTerm,
+            });
+            localStorage.setItem(PreviousSearchTerm, searchTerm);
+          })
+          .catch(() => {
+            handleState({
+              loading: false,
+              error: true,
+            });
+          });
+    };
+
+    getData();
+  }, [state.page, state.searchTerm]);
+
+  return (
+    <ErrorBoundary>
+      <Header handleState={handleState} />
+      <main className="main-content">
+        <MainPage value={state} />
+      </main>
+      <Pagination
+        handleState={handleState}
+        totalPages={state.totalPages || 0}
+        searchTerm={state.searchTerm || ''}
+      />
+    </ErrorBoundary>
+  );
+};
 
 export default App;
