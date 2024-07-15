@@ -3,7 +3,6 @@ import Cards from './bottom/Cards';
 import Pagination from './pagination/Pagination';
 import ErrorBoundary from './errorBoundry/ErrorBoundry';
 import ErrorButton from './errors/ErrorButton';
-import { PreviousSearchTerm } from './constants';
 
 export {
   Header,
@@ -11,5 +10,4 @@ export {
   Pagination,
   ErrorBoundary,
   ErrorButton,
-  PreviousSearchTerm,
 };

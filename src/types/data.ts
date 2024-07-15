@@ -37,32 +37,40 @@ type BookType = {
   bookCollections?: [[]];
 };
 
+type PageType = {
+  pageNumber: number;
+  pageSize: number;
+  numberOfElements: number;
+  totalElements: number;
+  totalPages: number;
+}
+
 export type BooksType = {
   books: BookType[];
 };
+
+export interface DataReducerType extends BooksType {
+  page: PageType;
+}
 
 export type PropsBook = {
   book: BookType;
 };
 
 export type DataType = {
-  data?: BooksType | null;
-  loading?: boolean;
-  error?: boolean;
-  total?: number;
-  page?: number;
-  totalPages?: number;
-  searchTerm?: string;
+  data: DataReducerType | null | undefined;
+  loading: boolean;
+  error: boolean;
+  page: number;
+  searchTerm: string;
 };
 
-export type PropsType = {
-  value: DataType;
-};
-
-export interface HandleStateType {
-  handleState: (newState: DataType) => void;
+export interface ActionType {
+  type: string;
+  payload?: DataReducerType | string;
 }
 
-export type PaginationType = {
-  pageNumber: number;
-};
+export interface DataContextType extends DataType {
+  dispatch: React.Dispatch<ActionType>
+
+}
