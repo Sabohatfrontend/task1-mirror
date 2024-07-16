@@ -14,3 +14,8 @@ export const fetchData = async (pageNumber: number, searchTerm: string) => {
 
   return response.json();
 };
+
+export const getDetail = async (id: string) => {
+  const response = await fetch(`https://stapi.co/api/v1/rest/book?uid=${id}`);
+  return response.json();
+};

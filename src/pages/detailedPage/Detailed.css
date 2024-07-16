@@ -1,0 +1,18 @@
+.detailed {
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--bg-color);
+}
+
+@media screen and (max-width: 768px) {
+  .detailed {
+    position: static;
+  }
+}

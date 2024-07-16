@@ -1,16 +1,13 @@
-import { Component, ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { PropsBook } from '../../types/data';
 
-class CardItem extends Component<PropsBook> {
-  constructor(props: PropsBook) {
-    super(props);
-  }
-  render(): ReactNode {
-    const { title, numberOfPages, publishedYear } = this.props.book;
-    const publishedDate = `${publishedYear}`;
+const CardItem = (props: PropsBook) => {
+  const { title, numberOfPages, publishedYear, uid } = props.book;
+  const publishedDate = `${publishedYear}`;
 
-    return (
-      <li className="card-item">
+  return (
+    <li className="card-item">
+      <Link className="card-link" to={`/${uid}`}>
         <h3 className="card-item-header">{title}</h3>
         <p>
           <span className="card-item-text">Page number:</span> {numberOfPages}
@@ -19,9 +16,9 @@ class CardItem extends Component<PropsBook> {
           <span className="card-item-text">Published Year:</span>{' '}
           {publishedDate}
         </p>
-      </li>
-    );
-  }
-}
+      </Link>
+    </li>
+  );
+};
 
 export default CardItem;
