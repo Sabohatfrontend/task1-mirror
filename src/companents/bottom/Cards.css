@@ -16,6 +16,11 @@
   transition: transform 0.2s ease-in-out;
 }
 
+.card-link {
+  text-decoration: none;
+  color: var(--color);
+}
+
 .card-item:hover {
   transform: translateY(-10px);
 }

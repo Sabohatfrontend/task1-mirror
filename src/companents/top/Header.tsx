@@ -11,7 +11,6 @@ const Header = () => {
       <ErrorButton />
     </header>
   );
-}
-
+};
 
 export default Header;

@@ -17,7 +17,6 @@ const ErrorButton = () => {
       </button>
     </>
   );
-}
-
+};
 
 export default ErrorButton;

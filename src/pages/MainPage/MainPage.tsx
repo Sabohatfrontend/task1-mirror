@@ -9,10 +9,10 @@ const MainPage = () => {
   let total = 0;
   const { loading, error, data, page, searchTerm, dispatch } = useDataContext();
 
-   if (data) {
+  if (data) {
     total = data.page.totalElements;
   }
-  
+
   useEffect(() => {
     const getData = async () => {
       if (page !== undefined && searchTerm != undefined) {
@@ -21,16 +21,16 @@ const MainPage = () => {
           .then((data) => {
             dispatch({
               type: ACTIONS.GET_DATA,
-              payload: data
-            })
+              payload: data,
+            });
           })
           .catch(() => {
-            dispatch({ type: ACTIONS.ERROR })
+            dispatch({ type: ACTIONS.ERROR });
           });
       }
     };
     getData();
-  }, [dispatch, page, searchTerm])
+  }, [dispatch, page, searchTerm]);
 
   if (loading) return <div>Loading...</div>;
 
@@ -45,7 +45,6 @@ const MainPage = () => {
       <Pagination />
     </>
   );
-}
-
+};
 
 export default MainPage;

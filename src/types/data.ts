@@ -1,4 +1,4 @@
-type BookType = {
+export type BookType = {
   uid: string;
   title: string;
   publishedYear: number;
@@ -43,7 +43,7 @@ type PageType = {
   numberOfElements: number;
   totalElements: number;
   totalPages: number;
-}
+};
 
 export type BooksType = {
   books: BookType[];
@@ -71,6 +71,5 @@ export interface ActionType {
 }
 
 export interface DataContextType extends DataType {
-  dispatch: React.Dispatch<ActionType>
-
+  dispatch: React.Dispatch<ActionType>;
 }

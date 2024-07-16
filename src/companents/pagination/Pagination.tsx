@@ -13,25 +13,27 @@ const Pagination = () => {
     dispatch({
       type: ACTIONS.PREV_PAGE,
     });
-  }
+  };
 
   const handleNextPage = () => {
     dispatch({
       type: ACTIONS.NEXT_PAGE,
     });
-  }
-
+  };
 
   return (
     <div className="pagination">
-      <button onClick={handlePrevPage} disabled={page - 1 < 0}>Prev</button>
+      <button onClick={handlePrevPage} disabled={page - 1 < 0}>
+        Prev
+      </button>
       <p>
         {page + 1}/{totalPages}
       </p>
-      <button onClick={handleNextPage} disabled={page + 1 >= totalPages}>Next</button>
+      <button onClick={handleNextPage} disabled={page + 1 >= totalPages}>
+        Next
+      </button>
     </div>
   );
-}
-
+};
 
 export default Pagination;

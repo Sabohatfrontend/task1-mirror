@@ -4,10 +4,4 @@ import Pagination from './pagination/Pagination';
 import ErrorBoundary from './errorBoundry/ErrorBoundry';
 import ErrorButton from './errors/ErrorButton';
 
-export {
-  Header,
-  Cards,
-  Pagination,
-  ErrorBoundary,
-  ErrorButton,
-};
+export { Header, Cards, Pagination, ErrorBoundary, ErrorButton };

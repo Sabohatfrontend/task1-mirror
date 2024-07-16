@@ -2,11 +2,9 @@ import { useState } from 'react';
 import { useDataContext } from '../../hooks/useDataContext';
 import { ACTIONS } from '../../reducer/actions';
 
-
 const SearchForm = () => {
   const { searchTerm, dispatch } = useDataContext();
   const [value, setValue] = useState(searchTerm);
-
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -28,7 +26,6 @@ const SearchForm = () => {
       <button type="submit">Search</button>
     </form>
   );
-}
-
+};
 
 export default SearchForm;

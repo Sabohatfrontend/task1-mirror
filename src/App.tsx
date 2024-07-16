@@ -1,10 +1,9 @@
-import {
-  ErrorBoundary
-} from './companents';
+import { ErrorBoundary } from './companents';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { HomeLayout } from './layout/HomeLayout';
-import { ErrorPage, MainPage } from './pages';
+import { ErrorPage } from './pages';
 import './App.css';
+import { DetailedPage } from './pages/detailedPage/DetailedPage';
 
 const App = () => {
   const roots = createBrowserRouter([
@@ -15,11 +14,15 @@ const App = () => {
       children: [
         {
           index: true,
-          element: <MainPage />
-        }
-      ]
-    }
-  ])
+          element: <></>,
+        },
+        {
+          path: ':id',
+          element: <DetailedPage />,
+        },
+      ],
+    },
+  ]);
 
   return (
     <ErrorBoundary>
