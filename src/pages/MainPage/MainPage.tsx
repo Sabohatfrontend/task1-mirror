@@ -23,15 +23,15 @@ const MainPage = () => {
   const pageNumber = searchParams.get('page');
   let currentPage = page || 0;
 
-    if (pageNumber) {
-      currentPage = Number(pageNumber) - 1;
-      if (currentPage !== page) {
-        dispatch({
-          type: ACTIONS.CURRENT_PAGE,
-          payload: currentPage
-        })
-      }
+  if (pageNumber) {
+    currentPage = Number(pageNumber) - 1;
+    if (currentPage !== page) {
+      dispatch({
+        type: ACTIONS.CURRENT_PAGE,
+        payload: currentPage,
+      });
     }
+  }
 
   if (search !== searchTerm || searchParams.size !== 2) {
     setSearchParams({
@@ -39,7 +39,6 @@ const MainPage = () => {
       page: (currentPage + 1).toString(),
     });
   }
-
 
   const getData = useCallback(async () => {
     dispatch({ type: ACTIONS.MAKE_REQUEST });
@@ -53,7 +52,6 @@ const MainPage = () => {
       .catch(() => {
         dispatch({ type: ACTIONS.ERROR });
       });
-
   }, [dispatch, currentPage, searchTerm]);
 
   useEffect(() => {
@@ -65,7 +63,7 @@ const MainPage = () => {
   if (error) return <div>Something went wrong!!!</div>;
 
   if (!data || data.books.length === 0) return <div>Nothing found!!!</div>;
-  console.log('4. Main page');
+
   return (
     <>
       <p>Total: {total}</p>

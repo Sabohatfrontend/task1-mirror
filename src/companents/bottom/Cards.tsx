@@ -3,7 +3,6 @@ import { BooksType } from '../../types/data';
 import CardItem from './CardItem';
 
 const Cards = (props: BooksType) => {
-  console.log('Cards');
   const booksLists = props.books.map((book) => {
     return <CardItem book={book} key={book.uid} />;
   });

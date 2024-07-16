@@ -1,7 +1,5 @@
 import { createContext, useReducer } from 'react';
-import {
-  paginatorReducer,
-} from '../reducer/paginatorReducer';
+import { paginatorReducer } from '../reducer/paginatorReducer';
 import { DataContextType, DataType } from '../types/data';
 
 const initialValue: DataType = {
@@ -25,4 +23,4 @@ export const DataContextProvider = ({
       {children}
     </DataContext.Provider>
   );
-}
+};

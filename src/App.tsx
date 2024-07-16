@@ -1,4 +1,4 @@
-import { ErrorBoundary} from './companents';
+import { ErrorBoundary } from './companents';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { HomeLayout } from './layout/HomeLayout';
 import { ErrorPage } from './pages';

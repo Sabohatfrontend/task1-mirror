@@ -20,7 +20,7 @@ const Pagination = () => {
     });
     setSearchParams({
       search: searchTerm,
-      page: (page).toString()
+      page: page.toString(),
     });
   };
 
@@ -30,11 +30,10 @@ const Pagination = () => {
     });
     setSearchParams({
       search: searchTerm,
-      page: (page + 2).toString()
+      page: (page + 2).toString(),
     });
   };
 
-  console.log('1. Pagination');
   return (
     <div className="pagination">
       <button onClick={handlePrevPage} disabled={page - 1 < 0}>

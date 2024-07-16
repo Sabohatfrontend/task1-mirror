@@ -1,8 +1,6 @@
 import { ActionType, DataType } from '../types/data';
 import { ACTIONS } from './actions';
 
-
-
 export function paginatorReducer(
   state: DataType,
   action: ActionType
@@ -17,10 +15,10 @@ export function paginatorReducer(
     case ACTIONS.GET_DATA:
       return typeof action.payload !== 'number'
         ? {
-          ...state,
-          loading: false,
-          data: action.payload,
-        }
+            ...state,
+            loading: false,
+            data: action.payload,
+          }
         : state;
     case ACTIONS.ERROR:
       return {
@@ -43,8 +41,8 @@ export function paginatorReducer(
       if (typeof action.payload === 'number') {
         return {
           ...state,
-          page: action.payload
-        }
+          page: action.payload,
+        };
       }
       return state;
     }

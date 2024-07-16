@@ -12,7 +12,6 @@ export const HomeLayout = () => {
   };
 
   return (
-
     <div className="content">
       <Header />
       <div className={id ? 'main-content' : 'main-page'}>
@@ -22,6 +21,5 @@ export const HomeLayout = () => {
         <Outlet />
       </div>
     </div>
-
   );
 };

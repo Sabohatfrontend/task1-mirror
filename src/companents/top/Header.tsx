@@ -4,7 +4,6 @@ import SearchForm from './SearchForm';
 import ErrorButton from '../errors/ErrorButton';
 
 const Header = () => {
-  console.log('Header');
   return (
     <header className="header">
       <img src={logo} alt="Logo" />

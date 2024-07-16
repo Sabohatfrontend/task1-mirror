@@ -3,7 +3,6 @@ import { useSetLS } from '../../hooks/useSetLS';
 import { useSearchParams } from 'react-router-dom';
 
 const SearchForm = () => {
-
   const [searchTerm, setSeachTerm] = useSetLS();
   const [searchParams, setSearchParams] = useSearchParams();
   const search = searchParams.get('search');
@@ -18,7 +17,6 @@ const SearchForm = () => {
     setSeachTerm(value);
     setSearchParams({ search: value, page: '1' });
   };
-  console.log('searchForm');
 
   return (
     <form className="top-form" onSubmit={handleSubmit}>
