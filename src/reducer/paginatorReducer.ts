@@ -1,7 +1,7 @@
 import { ActionType, DataType } from '../types/data';
 import { ACTIONS } from './actions';
 
-export const PreviousSearchTerm = 'prev-search-term';
+
 
 export function paginatorReducer(
   state: DataType,
@@ -15,12 +15,12 @@ export function paginatorReducer(
         data: null,
       };
     case ACTIONS.GET_DATA:
-      return typeof action.payload !== 'string'
+      return typeof action.payload !== 'number'
         ? {
-            ...state,
-            loading: false,
-            data: action.payload,
-          }
+          ...state,
+          loading: false,
+          data: action.payload,
+        }
         : state;
     case ACTIONS.ERROR:
       return {
@@ -39,15 +39,12 @@ export function paginatorReducer(
         ...state,
         page: state.page - 1,
       };
-    case ACTIONS.SEARCH_TERM: {
-      if (typeof action.payload === 'string') {
-        if (action.payload !== '')
-          localStorage.setItem(PreviousSearchTerm, action.payload);
+    case ACTIONS.CURRENT_PAGE: {
+      if (typeof action.payload === 'number') {
         return {
           ...state,
-          page: 0,
-          searchTerm: action.payload || '',
-        };
+          page: action.payload
+        }
       }
       return state;
     }

@@ -62,12 +62,11 @@ export type DataType = {
   loading: boolean;
   error: boolean;
   page: number;
-  searchTerm: string;
 };
 
 export interface ActionType {
   type: string;
-  payload?: DataReducerType | string;
+  payload?: DataReducerType | number;
 }
 
 export interface DataContextType extends DataType {

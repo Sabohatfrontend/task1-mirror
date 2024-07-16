@@ -4,5 +4,5 @@ export const ACTIONS = {
   ERROR: 'error',
   NEXT_PAGE: 'next-page',
   PREV_PAGE: 'prev-page',
-  SEARCH_TERM: 'search-term',
+  CURRENT_PAGE:'current-page'
 };
