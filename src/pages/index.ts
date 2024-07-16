@@ -1,4 +1,4 @@
-import ErrorPage from './errorPage/ErrorPage';
-import MainPage from './mainPage/MainPage';
+import ErrorPage from './ErrorPage/ErrorPage';
+import MainPage from './MainPage/MainPage';
 
 export { ErrorPage, MainPage };
